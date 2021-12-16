@@ -50,6 +50,12 @@ textarea {
 	color: white;
 	margin: 10px;
 	cursor: pointer;
+
+	
+}
+
+.post > button:hover {
+	box-shadow: 2.5px 5px black;
 }
 
 article {
@@ -68,12 +74,17 @@ article.userId > img {
 	height: 100px;
 }
 
-i:hover {
+.icons > i:hover {
 	color: #4056a1;
 }
 
 #tweets-container > article {
 	padding: 15px;
+	
+}
+
+#tweets-container >article:hover {
+	box-shadow: 5px 10px #4056a1;
 }
 
 .errorMsg {

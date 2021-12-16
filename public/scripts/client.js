@@ -6,6 +6,7 @@
 $(() => {
 	loadTweets();
 	$('#newTweetForm').on('submit', onSubmit);
+	$(`#error-container`).hide()
 	// renderTweets(data);
 });
 
@@ -50,20 +51,25 @@ const loadTweets = function() {
 
 const onSubmit = function(event) {
 	event.preventDefault();
-	const $error = createErrorElement();
 
 	if ($('#counter').val() < 0) {
-		return $(`#error-container`).append($error);
+		return $(`#error-container`).slideDown()
 	}
 
 	if ($('#counter').val() == 140) {
-		return $(`#error-container`).append($error);
+		return $(`#error-container`).slideDown()
 	}
 
 	const data = $(this).serialize();
 	$.post('/tweets', data).then(() => {
+		$(`#error-container`).slideUp()
 		loadTweets();
 	});
+};
+const newEscape = function(str) {
+	let div = document.createElement('div');
+	div.appendChild(document.createTextNode(str));
+	return div.innerHTML;
 };
 
 const createTweetElement = function(tweet) {
@@ -71,10 +77,10 @@ const createTweetElement = function(tweet) {
    <article>
           <header>
             <div class='userId'>
-              <img src=${tweet.user.avatars}><span>${tweet.user.name}</span>
-            </div> <span>${tweet.user.handle}</span>
+              <img src=${newEscape(tweet.user.avatars)}><span>${newEscape(tweet.user.name)}</span>
+            </div> <span>${newEscape(tweet.user.handle)}</span>
           </header>       
-          <p>${tweet.content.text}</p>
+          <p>${newEscape(tweet.content.text)}</p>
           <footer>
             <span>${timeago.format(tweet.created_at)}</span>
             <div class = "icons">
@@ -88,13 +94,3 @@ const createTweetElement = function(tweet) {
 	return $tweet;
 };
 
-const createErrorElement = function() {
-	let $error = $(`
-    <div class = "errorMsg">
-    <i class="fas fa-exclamation"></i>
-    <h4>Sorry! This tweet format isn't what we expected :< </h4>
-    <i class="fas fa-exclamation"></i>
-    </div>
-  `);
-	return $error;
-};

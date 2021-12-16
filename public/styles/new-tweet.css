@@ -80,3 +80,19 @@ color: #4056A1;
 #tweets-container > article {
   padding: 15px;
 }
+
+.errorMsg {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ border: red solid 2px;
+ margin-bottom: 30px;
+ margin-left: 25%;
+ margin-right: 25%;
+
+}
+
+.errorMsg > i {
+  padding: 32px;
+  color:red
+}

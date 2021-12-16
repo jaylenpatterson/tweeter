@@ -50,7 +50,7 @@
     <main class="container">
         <section class="new-tweet">
           <!-- <h2>Compose Tweet</h2> -->
-          <form action="/tweets" method="post">
+          <form action="/tweets" method="post" id="newTweetForm">
 
             <div class ="prompt"> 
             <label for="tweet-text">What are you humming about?</label>
@@ -58,7 +58,7 @@
             </div>
 
             <div class = "post">
-              <button type="submit" >Tweet</button>
+              <button type="submit" form="newTweetForm">Tweet</button>
               <output name="counter" class="counter" for="tweet-text" id="counter">140</output>
             </div>
 
@@ -66,6 +66,9 @@
         </section>
         <br>
         <br>
+            <section id="error-container">
+
+            </section>
             <section id="tweets-container">
 
             </section>

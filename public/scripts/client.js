@@ -4,6 +4,14 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(()=>{
+
+loadTweets()
+$("#newTweetForm").on("submit", onSubmit)
+// renderTweets(data);
+});
+
+
+
 const data = [
     {
       "user": {
@@ -31,9 +39,36 @@ const data = [
 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
+   const $tweet = createTweetElement(tweet);
 
-    createTweetElement(tweet);
+    $(`#tweets-container`).prepend($tweet)
   }
+}
+
+const loadTweets = function() {
+  $.get("/tweets")
+    .then((data) => {
+     renderTweets(data);
+    })
+}
+
+const onSubmit = function(event) {
+  event.preventDefault();
+  const $error = createErrorElement();
+
+  if ($('#counter').val() < 0) {
+     return $(`#error-container`).append($error);
+  }
+
+  if ($('#counter').val() == 140) {
+     return $(`#error-container`).append($error);
+  }
+
+  const data = $(this).serialize();
+  $.post("/tweets", data)
+    .then(() => {
+      loadTweets();
+    })
 }
 
 const createTweetElement = function(tweet) {
@@ -55,45 +90,32 @@ const createTweetElement = function(tweet) {
           </footer>
         </article>
   `)
-  $(`#tweets-container`).append($tweet)
+  return $tweet;
 }
 
-renderTweets(data);
-
-});
-
-
-
-
-
-
-
-
-
+const createErrorElement = function() {
+  let $error = $(`
+    <div class = "errorMsg">
+    <i class="fas fa-exclamation"></i>
+    <h4>Sorry! This tweet format isn't what we expected :< </h4>
+    <i class="fas fa-exclamation"></i>
+    </div>
+  `)
+  return $error;
+}
 
 
-// const $tweet = createTweetElement(tweetData);
-
-// const createTweetElement = function() {
-
-// };
 
 
-// $(()=>{
-//   $.ajax({
-//     url: "/tweets",
-//     method: "GET",
-//     dataType: "json",
-//     success: (data) => {
-//       console.log("data", data);
-//     },
-//     error: (err) => {
-//       console.log("error", err);
-//     }
-//   })
-// })
+
+
+
+
+
+
+
+
 
 // // Test / driver code (temporary)
 // console.log($tweet); // to see what it looks like
 // $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.+
-

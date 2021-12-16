@@ -8,7 +8,7 @@ $(document).ready(function() {
     if (remaining <= 0) {
       counter.style.color = "red";
     } else {
-      counter.style.color = "black"
+      counter.style.color = "black";
     }
     counter.textContent = remaining;
   });

@@ -4,11 +4,11 @@ Tweeter is a simple, single-page Twitter clone created by Jaylen Patterson
 
 ## Final Product
 
-!["A screenshot of tweeter in action!"](https://user-images.githubusercontent.com/78564008/145519075-f0f5b641-1097-4fe4-8714-9964db310333.png)
+!["A screenshot of tweeter in action!"](https://user-images.githubusercontent.com/78564008/146486078-8b8cbe9f-9cef-427f-84ee-6e9b031ea164.png)
 
-!["A screenshot of some of tweeters functionality"](https://user-images.githubusercontent.com/78564008/145519033-09cfd8e9-edc3-4940-85bc-b74c3783dda3.png)
+!["A screenshot of some of tweeters functionality"](https://user-images.githubusercontent.com/78564008/146486110-0839b3ba-f580-48d7-a436-77a9b66883d1.png)
 
-!["A screenshot of tweeter i"](https://user-images.githubusercontent.com/78564008/145519033-09cfd8e9-edc3-4940-85bc-b74c3783dda3.png)
+!["A screenshot showing off tweeters fluid design!"](https://user-images.githubusercontent.com/78564008/146486184-f8e2d239-0044-47bc-892f-6797daf6ed95.png)
 
 ## Getting Started
 

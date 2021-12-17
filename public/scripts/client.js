@@ -1,7 +1,7 @@
 $(() => {
 	loadTweets();
 	$('#newTweetForm').on('submit', onSubmit);
-	$(`#error-container`).hide()
+	$(`#error-container`).hide();
 });
 
 const data = [
@@ -27,7 +27,7 @@ const data = [
 		},
 		created_at: 1461113959088
 	}
-]//displays tweets from tweeters datbase
+]; //displays tweets from tweeters datbase
 const renderTweets = function(tweets) {
 	for (let tweet of tweets) {
 		const $tweet = createTweetElement(tweet);
@@ -46,17 +46,19 @@ const onSubmit = function(event) {
 	event.preventDefault();
 
 	if ($('#counter').val() < 0) {
-		return $(`#error-container`).slideDown()
+		return $(`#error-container`).slideDown();
 	}
 
 	if ($('#counter').val() == 140) {
-		return $(`#error-container`).slideDown()
+		return $(`#error-container`).slideDown();
 	}
 
 	const data = $(this).serialize();
 	$.post('/tweets', data).then(() => {
-		$(`#error-container`).slideUp()
+		$(`#error-container`).slideUp();
 		loadTweets();
+		$('textarea#tweet-text').val('');
+		$('#counter').val(140);
 	});
 };
 
@@ -89,4 +91,3 @@ const createTweetElement = function(tweet) {
   `);
 	return $tweet;
 };
-

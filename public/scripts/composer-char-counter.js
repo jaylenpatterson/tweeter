@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	$('#tweet-text').on('input', function() {
 		let remaining = maxChars - textArea.value.length;
-		if (remaining <= 0) {
+		if (remaining < 0) {
 			counter.style.color = 'red';
 		} else {
 			counter.style.color = 'black';

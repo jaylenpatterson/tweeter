@@ -111,12 +111,6 @@ header {
 	justify-content: space-between;
 }
 
-/* header {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-} */
-
 header > span {
 	color: black;
 	display: flex;
@@ -150,6 +144,7 @@ footer > span {
 	padding-top: 50px;
 }
 
+	/* Changes the layout of the page depending on the size of the clients screen */
 
 @media screen and (max-width: 1230px) {
 		.simple {
@@ -189,6 +184,3 @@ footer > span {
 		}
 
   }
-/*
-* Additional CSS can be defined below or in other CSS files, as per instructions
-*/

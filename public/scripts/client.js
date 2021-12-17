@@ -1,13 +1,7 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 $(() => {
 	loadTweets();
 	$('#newTweetForm').on('submit', onSubmit);
 	$(`#error-container`).hide()
-	// renderTweets(data);
 });
 
 const data = [
@@ -33,8 +27,7 @@ const data = [
 		},
 		created_at: 1461113959088
 	}
-];
-
+]//displays tweets from tweeters datbase
 const renderTweets = function(tweets) {
 	for (let tweet of tweets) {
 		const $tweet = createTweetElement(tweet);
@@ -42,13 +35,13 @@ const renderTweets = function(tweets) {
 		$(`#tweets-container`).prepend($tweet);
 	}
 };
-
+// gets tweets from tweeters database
 const loadTweets = function() {
 	$.get('/tweets').then((data) => {
 		renderTweets(data);
 	});
 };
-
+// listens for submission then either creates a new tweet or displays an error for the client
 const onSubmit = function(event) {
 	event.preventDefault();
 
@@ -66,12 +59,15 @@ const onSubmit = function(event) {
 		loadTweets();
 	});
 };
+
+// prevents cross site scripting through tweeting
 const newEscape = function(str) {
 	let div = document.createElement('div');
 	div.appendChild(document.createTextNode(str));
 	return div.innerHTML;
 };
 
+// Takes clients information and displays it in the format of a tweet, profile, and options for interacting with the content
 const createTweetElement = function(tweet) {
 	let $tweet = $(`
    <article>

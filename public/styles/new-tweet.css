@@ -1,13 +1,4 @@
-.container {
-	display: flex;
-	flex-direction: column;
-	background-color: white;
-	color: black;
-	text-align: left;
-	justify-content: flex-start;
-	margin-left: 5%;
-	margin-right: 5%;
-}
+
 
 .post {
 	display: flex;

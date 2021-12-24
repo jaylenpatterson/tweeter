@@ -31,13 +31,13 @@ const data = [
 const renderTweets = function(tweets) {
 	for (let tweet of tweets) {
 		const $tweet = createTweetElement(tweet);
-
 		$(`#tweets-container`).prepend($tweet);
 	}
 };
 // gets tweets from tweeters database
 const loadTweets = function() {
 	$.get('/tweets').then((data) => {
+		 $(`#tweets-container`).empty()
 		renderTweets(data);
 	});
 };
@@ -56,9 +56,9 @@ const onSubmit = function(event) {
 	const data = $(this).serialize();
 	$.post('/tweets', data).then(() => {
 		$(`#error-container`).slideUp();
-		loadTweets();
 		$('textarea#tweet-text').val('');
 		$('#counter').val(140);
+		loadTweets();
 	});
 };
 

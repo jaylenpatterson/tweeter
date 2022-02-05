@@ -1,6 +1,6 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone created by Jaylen Patterson
+Tweeter is a simple, single-page Twitter clone created with Express and Node.
 
 ## Final Product
 
